@@ -143,7 +143,13 @@ body._lock {
 }
 
 .header__logo {
-	z-index: 10;
+	z-index: 11;
+	transition: all 0.5s ease 0s;
+}
+
+.header__logo._disabled {
+	transform: translate(-200%, 0);
+	transition: transform 1s ease 0s;
 }
 
 .header__logo-title {
@@ -189,7 +195,7 @@ body._lock {
 	display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
 	.header {
 		position: fixed;
 	}
@@ -277,7 +283,7 @@ body._lock {
 		width: 100%;
 		height: 90px;
 		background-color: #0C0C0E;
-		z-index: 2;
+		z-index: 10;
 	}
 
 	.header__menu._active:before {
@@ -332,7 +338,7 @@ body._lock {
 	height: 220px;
 	position: absolute;
 	top: 310px;
-	left: 580px;
+	left: 600px;
 	transform: translate(-100%, 0);
 	background-color: #0C0C0E;
 }
@@ -494,6 +500,12 @@ body._lock {
 
 .form__labels label:not(:last-child) {
 	margin: 0 90px 0 0;
+}
+
+@media (max-width: 760px) {
+	.form__labels label:not(:last-child) {
+		margin: 0 40px 0 0;
+	}
 }
 
 .label-bold {
@@ -918,7 +930,7 @@ input[type='radio'] {
 .cards__body {
 	display: flex;
 	justify-content: space-between;
-	margin: 0 0 41px 0;
+	margin: 0 0 40px 0;
 }
 
 .cards__find-card {}
@@ -935,7 +947,11 @@ input[type='radio'] {
 }
 
 .find-card__title:not(:last-child) {
-	margin: 0px 0px 30px 0px;
+	margin: 0px 0px 35px 0px;
+}
+
+.cards__decor {
+	margin: 0px 0px 41px 0px;
 }
 
 .find-card__block {
@@ -949,7 +965,7 @@ input[type='radio'] {
 	background: #BB945F;
 	display: flex;
 	flex-direction: column;
-	border: 20px solid #FFF
+	border: 18px solid #FFF
 }
 
 .find-card__label {
@@ -959,7 +975,7 @@ input[type='radio'] {
 	line-height: calc(50 / 30 * 100%);
 	letter-spacing: 0.6px;
 	padding: 0 0 0 20px;
-	margin: 20px 0;
+	margin: 20px 0 20px 0;
 }
 
 .find-card__name {
@@ -1021,7 +1037,7 @@ input[type='radio'] {
 }
 
 .get-card__item>*:not(:last-child) {
-	margin: 0px 0px 35px 0px;
+	margin: 0px 0px 30px 0px;
 }
 
 .get-card__title {
@@ -1043,6 +1059,7 @@ input[type='radio'] {
 .get-card__buttons {
 	display: flex;
 	column-gap: 20px;
+
 }
 
 .get-card__link {
@@ -1059,6 +1076,7 @@ input[type='radio'] {
 	letter-spacing: 1px;
 	transition: all 1s ease 0s;
 	cursor: pointer;
+	background-color: #FFF;
 }
 
 .get-card__link-signup {

@@ -9,11 +9,13 @@ console.log('1.Вёрстка валидная +10\n2.Вёрстка семан�
 
 const menuIcon = document.querySelector('.menu__icon');
 const menuHeader = document.querySelector('.header__menu');
+const logoHeader = document.querySelector('.header__logo')
 if (menuIcon) {
 	menuIcon.addEventListener('click', function (e) {
 		menuIcon.classList.toggle('_active');
 		menuHeader.classList.toggle('_active');
 		document.body.classList.toggle('_lock');
+		logoHeader.classList.toggle('_disabled');
 	});
 }
 
@@ -35,6 +37,7 @@ if (menuLinks.length > 0) {
 				menuIcon.classList.remove('_active');
 				menuHeader.classList.remove('_active');
 				document.body.classList.remove('_lock');
+				logoHeader.classList.toggle('_disabled');
 			}
 
 			window.scrollTo({
