@@ -3,11 +3,12 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=1440">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Forum:regular&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 	<title>Library</title>
 </head>
 
@@ -21,19 +22,19 @@
 				<nav class="header__menu">
 					<ul class="header__list">
 						<li class="header__item">
-							<a href="#about" class="header__link">About</a>
+							<a data-goto=".about" href="#" class="header__link">About</a>
 						</li>
 						<li class="header__item">
-							<a href="#favorites" class="header__link">Favorites</a>
+							<a data-goto=".favorites" href="#" class="header__link">Favorites</a>
 						</li>
 						<li class="header__item">
-							<a href="#shop" class="header__link">Coffee shop</a>
+							<a data-goto=".coffe" href="#" class="header__link">Coffee shop</a>
 						</li>
 						<li class="header__item">
-							<a href="#contacts" class="header__link">Contacts</a>
+							<a data-goto=".contacts" href="#" class="header__link">Contacts</a>
 						</li>
 						<li class="header__item">
-							<a href="#card" class="header__link">Library Card</a>
+							<a data-goto=".cards" href="#" class="header__link">Library Card</a>
 						</li>
 					</ul>
 				</nav>
@@ -41,6 +42,9 @@
 					<a href="" class="header__icon-item">
 						<img src="img/header/icon_profile.svg" alt="header-icon">
 					</a>
+				</div>
+				<div class="menu__icon">
+					<span></span>
 				</div>
 			</div>
 		</header>
@@ -60,7 +64,49 @@
 						<div class="about__subtitle subtitle">The Brooklyn Library is a free workspace, a large number of
 							books and a cozy coffee shop inside </div>
 					</div>
-					<div class="about__body">
+					<!-- Slider main container -->
+					<div class="swiper">
+						<!-- Additional required wrapper -->
+						<div class="swiper-wrapper">
+							<!-- Slides -->
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/01.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/02.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/03.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/04.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/05.png" alt="bookwarm">
+								</div>
+							</div>
+							...
+						</div>
+						<!-- If we need pagination -->
+						<div class="swiper-pagination"></div>
+
+						<!-- If we need navigation buttons -->
+						<div class="swiper-button-prev swiper-btn"></div>
+						<div class="swiper-button-next swiper-btn"></div>
+
+						<!-- If we need scrollbar -->
+					</div>
+
+					<!-- <div class="about__body">
 						<div class="about__column">
 							<div class="about__item">
 								<img src="img/main/about/01.png" alt="bookwarm">
@@ -91,7 +137,7 @@
 						<div class="slider__dots-1 dots-slider"></div>
 						<div class="slider__dots-2 dots-slider"></div>
 						<div class="slider__dots-3 dots-slider"></div>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			<section id="favorites" class="page__favorites favorites">
@@ -489,11 +535,13 @@
 					<div class="coffe__header header-text">
 						<h2 class="coffe__title title">Coffee shop</h2>
 						<div class="coffe__decor decor"></div>
-						<div class="coffe__subtitle subtitle">In our library, we have of cozy coffee shop, welcoming in
-							customers with frothy cappuccinos and friendly conversation. <br>
-							You can get a favorite book and read in coffee shop. our barista to cook you best coffee, and
-							also
-							you can try desserts from bakery.</div>
+						<div class="coffe__subtitle subtitle">
+							<p>In our library, we have of cozy coffee shop, welcoming in
+								customers with frothy cappuccinos and friendly conversation.</p>
+							<p>You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and
+								also
+								you can try desserts from bakery.</p>
+						</div>
 					</div>
 					<div class="coffe__body">
 						<div class="coffe__column">
@@ -622,8 +670,7 @@
 						<div class="cards__get-card">
 							<div class="get-card__item">
 								<div class="get-card__title">Get a reader card</div>
-								<div class="get-card__text">You will be able to see a reader card after logging into account
-									or
+								<div class="get-card__text">You will be able to see a reader card after logging into account or
 									you can register a new account</div>
 								<div class="get-card__buttons">
 									<button class="get-card__link get-card__link-signup">Sign Up</button>
@@ -764,6 +811,7 @@
 			</div>
 		</footer>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 
