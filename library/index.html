@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Inter:regular,700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Forum:regular&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 	<title>Library</title>
 </head>
 
@@ -63,7 +64,49 @@
 						<div class="about__subtitle subtitle">The Brooklyn Library is a free workspace, a large number of
 							books and a cozy coffee shop inside </div>
 					</div>
-					<div class="about__body">
+					<!-- Slider main container -->
+					<div class="swiper">
+						<!-- Additional required wrapper -->
+						<div class="swiper-wrapper">
+							<!-- Slides -->
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/01.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/02.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/03.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/04.png" alt="bookwarm">
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper__image">
+									<img src="img/main/about/05.png" alt="bookwarm">
+								</div>
+							</div>
+							...
+						</div>
+						<!-- If we need pagination -->
+						<div class="swiper-pagination"></div>
+
+						<!-- If we need navigation buttons -->
+						<div class="swiper-button-prev swiper-btn"></div>
+						<div class="swiper-button-next swiper-btn"></div>
+
+						<!-- If we need scrollbar -->
+					</div>
+
+					<!-- <div class="about__body">
 						<div class="about__column">
 							<div class="about__item">
 								<img src="img/main/about/01.png" alt="bookwarm">
@@ -94,7 +137,7 @@
 						<div class="slider__dots-1 dots-slider"></div>
 						<div class="slider__dots-2 dots-slider"></div>
 						<div class="slider__dots-3 dots-slider"></div>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			<section id="favorites" class="page__favorites favorites">
@@ -768,6 +811,7 @@
 			</div>
 		</footer>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	<script src="js/script.js"></script>
 </body>
 
