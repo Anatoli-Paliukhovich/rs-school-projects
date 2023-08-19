@@ -6,7 +6,6 @@ console.log('1.Вёрстка соответствует макету. Шири�
 
 
 //Меню бургер
-
 const menuIcon = document.querySelector('.menu__icon');
 const menuHeader = document.querySelector('.header__menu');
 const logoHeader = document.querySelector('.header__logo')
@@ -19,7 +18,6 @@ if (menuIcon) {
 }
 
 //Плавный скролл
-
 const menuLinks = document.querySelectorAll('.header__link[data-goto]');
 if (menuLinks.length > 0) {
 	menuLinks.forEach(menuLink => {
@@ -29,8 +27,7 @@ if (menuLinks.length > 0) {
 		const menuLink = e.target;
 		if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
 			const menuBlock = document.querySelector(menuLink.dataset.goto);
-			const menuValue = menuBlock.getBoundingClientRect().top + pageYOffset -
-				document.querySelector('.header').offsetHeight;
+			const menuValue = menuBlock.getBoundingClientRect().top + pageYOffset;
 
 			if (menuIcon.classList.contains('_active')) {
 				menuIcon.classList.remove('_active');
@@ -70,3 +67,37 @@ new Swiper('.swiper', {
 		}
 	}
 });
+
+//Slider-Favourites
+const sliderWrapper = document.querySelector('.slider-wrapper');
+const sliderItems = document.querySelectorAll('.favorites__body');
+const sliderDots = Array.from(document.querySelectorAll('.dot'));
+const sliderLabels = document.querySelectorAll('.label-bold');
+
+let index = 0;
+
+function activeSlide(n) {
+	for (let item of sliderItems) {
+		item.classList.remove('active');
+	}
+	sliderItems[n].classList.add('active');
+}
+function activeLabel(n) {
+	for (let label of sliderLabels) {
+		label.classList.remove('active');
+	}
+	sliderLabels[n].classList.add('active');
+}
+
+sliderDots.forEach(function (dot, indexDot) {
+	dot.addEventListener('click', function () {
+		index = indexDot;
+		activeSlide(index);
+		activeLabel(index);
+	})
+});
+
+
+
+
+
