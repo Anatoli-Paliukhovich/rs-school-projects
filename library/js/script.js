@@ -17,6 +17,22 @@ if (menuIcon) {
 	});
 }
 
+//Drop menu в header
+const headerIc = document.querySelector('.header__icon');
+const headerIcon = document.querySelector('.header__icon-item');
+const dropMenu = document.querySelector('.drop-menu');
+document.addEventListener('click', menuDrop);
+function menuDrop(e) {
+	if (e.target.closest('.header__icon-item')) {
+		dropMenu.classList.toggle('_active');
+		e.preventDefault();
+	}
+	if (!e.target.closest('.header__icon')) {
+		dropMenu.classList.remove('_active');
+	}
+}
+
+
 //Плавный скролл
 const menuLinks = document.querySelectorAll('.header__link[data-goto]');
 if (menuLinks.length > 0) {
@@ -74,7 +90,7 @@ const sliderItems = document.querySelectorAll('.favorites__body');
 const sliderDots = Array.from(document.querySelectorAll('.dot'));
 const sliderLabels = document.querySelectorAll('.label-bold');
 
-let index = 0;
+let i = 0;
 
 function activeSlide(n) {
 	for (let item of sliderItems) {
@@ -88,16 +104,141 @@ function activeLabel(n) {
 	}
 	sliderLabels[n].classList.add('active');
 }
-
+function nextSlide() {
+	if (i === sliderItems.length - 1) {
+		i = 0;
+		combineFunc(i);
+	} else {
+		i++;
+		combineFunc(i);
+	}
+}
 sliderDots.forEach(function (dot, indexDot) {
 	dot.addEventListener('click', function () {
-		index = indexDot;
-		activeSlide(index);
-		activeLabel(index);
+		i = indexDot;
+		combineFunc(i)
+		clearInterval(setInt);
 	})
 });
+function combineFunc(i) {
+	activeSlide(i);
+	activeLabel(i);
+}
+const setInt = setInterval(nextSlide, 3000);
 
 
+
+
+//Popup
+/*
+const popup = document.querySelector('.popup');
+
+document.addEventListener('click', showPopup);
+
+function showPopup(e) {
+	if (e.target.closest('.btn')) {
+		popup.classList.add('open');
+		e.preventDefault();
+		document.body.classList.add('_lock');
+	}
+	if (!e.target.closest('.favorites') && !e.target.closest('.popup__content') || e.target.closest('.close-btn')) {
+		popup.classList.remove('open');
+		document.body.classList.remove('_lock');
+	}
+}
+*/
+//Popups
+
+const popupBtns = document.querySelectorAll('.btn');
+const body = document.querySelector('body');
+const lock = document.querySelectorAll('.lock-padding');
+const popupCloseIcons = document.querySelectorAll('.close-btn');
+const popup = document.querySelector('.popup');
+
+popupBtns.forEach(function (btn, index) {
+	btn.dataset.index = index;
+	btn.addEventListener('click', function (e) {
+		popupOpen(index + 1);
+	})
+})
+
+if (popupCloseIcons.length > 0) {
+	for (let i = 0; i < popupCloseIcons.length; i++) {
+		const popupCloseIcon = popupCloseIcons[i];
+		popupCloseIcon.addEventListener('click', function (e) {
+			popupClose(popupCloseIcon.closest('.popup'));
+		});
+	}
+}
+function popupClose(elems) {
+	document.body.classList.remove('_lock');
+	elems.classList.remove('open');
+	bodyUnLock();
+}
+
+function popupOpen(e) {
+	popup.classList.add('open');
+	bodyLock();
+	clearInterval(setInt);
+	popup.addEventListener('click', function (e) {
+		if (!e.target.closest('.popup__content')) {
+			popupClose(e.target.closest('.popup'));
+		}
+	})
+}
+
+function bodyLock() {
+	body.style.paddingRight = '17px';
+	body.classList.add('_lock');
+}
+
+function bodyUnLock() {
+	body.style.paddingRight = '0px';
+	body.classList.remove('_lock');
+}
+const frmBtn = document.querySelector('.form__btn');
+
+frmBtn.addEventListener('click', function (e) {
+	e.preventDefault();
+})
+
+
+//Modal-popups_logIn
+const loginLinks = document.querySelectorAll('.log-link');
+const loginPopup = document.querySelector('.modal__login');
+const popupClos = document.querySelectorAll('.modal-close');
+
+loginLinks.forEach(function (link, index) {
+	link.dataset.index = index;
+	link.addEventListener('click', function (e) {
+		popupOpen(index + 1);
+	})
+})
+if (popupClos.length > 0) {
+	for (let i = 0; i < popupClos.length; i++) {
+		const popupCloseIcon = popupClos[i];
+		popupCloseIcon.addEventListener('click', function (e) {
+			popupClose(popupCloseIcon.closest('.modal__login'));
+		});
+	}
+}
+function popupClose(elems) {
+	document.body.classList.remove('_lock');
+	elems.classList.remove('open');
+}
+
+function popupOpen(e) {
+	loginPopup.classList.add('open');
+	dropMenu.classList.remove('_active');
+	loginPopup.addEventListener('click', function (e) {
+		if (!e.target.closest('.modal__login-content')) {
+			popupClose(e.target.closest('.modal__login'));
+		}
+	})
+}
+
+
+//Modal-popups_Register
 
 
 

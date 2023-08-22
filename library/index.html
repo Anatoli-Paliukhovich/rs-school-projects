@@ -42,6 +42,12 @@
 					<a href="" class="header__icon-item">
 						<img src="img/header/icon_profile.svg" alt="header-icon">
 					</a>
+					<div class="header__drop-menu drop-menu">
+						<div class="drop-menu__title">Profile</div>
+						<div class="drop-menu__decor"></div>
+						<div class="drop-menu__login log-link">Log In</div>
+						<div class="drop-menu__register reg-link">Register</div>
+					</div>
 				</div>
 				<div class="menu__icon">
 					<span></span>
@@ -151,7 +157,7 @@
 						<form action="#" class="favorites__form">
 							<div class="form__labels">
 								<label class="label__winter label-bold active">
-									<input class="dot" checked type="radio" name="season">
+									<input class="dot" type="radio" name="season">
 									Winter
 								</label>
 								<label class="label__spring label-bold">
@@ -261,7 +267,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="favorites__body">
+						<div class="favorites__body ">
 							<div class="favorites__columns columns">
 								<div class="columns__body">
 									<div class="favorites__content">
@@ -678,8 +684,8 @@
 								<div class="get-card__text">You will be able to see a reader card after logging into account or
 									you can register a new account</div>
 								<div class="get-card__buttons">
-									<button class="get-card__link get-card__link-signup">Sign Up</button>
-									<button class="get-card__link get-card__link-login">Log in</button>
+									<button class="get-card__link get-card__link-signup reg-link">Sign Up</button>
+									<button class="get-card__link get-card__link-login log-link">Log in</button>
 								</div>
 							</div>
 						</div>
@@ -815,6 +821,111 @@
 				</div>
 			</div>
 		</footer>
+	</div>
+	<div class="popup">
+		<div class="popup__body">
+			<div class="popup__content">
+				<div href="" class="close-btn">
+					<img src="img/close_btn.svg" alt="close-btn">
+				</div>
+				<div class="popup__header">
+					<div class="popup__header-title">Buy a library card</div>
+				</div>
+				<div class="popup__main">
+					<form action="#" class="popup__form">
+						<div class="form__card-number">
+							<p class="card-number__title frm-title">Bank card number</p>
+							<input class="card-number__input frm-inp" type="text">
+						</div>
+						<div class="form__exp-code">
+							<div class="exp-code__title frm-title">Expiration code</div>
+							<input class="exp-code__input frm-inp" type="text">
+							<input class="exp-code__input frm-inp" type="text">
+						</div>
+						<div class="form__cvc">
+							<div class="cvc__title frm-title">CVC</div>
+							<input class="cvc__input frm-inp" type="text">
+						</div>
+						<div class="form__cardholder-name">
+							<div class="cardholder-name__title frm-title">Cardholder name</div>
+							<input class="cardholder-name__input frm-inp" type="text">
+						</div>
+						<div class="form__postal-code">
+							<div class="postal-code__title frm-title">Postal code</div>
+							<input class="postal-code__input frm-inp" type="text">
+						</div>
+						<div class="form__city-town">
+							<div class="city-town__title frm-title">City / Town</div>
+							<input class="city-town__input frm-inp" type="text">
+						</div>
+						<div class="form__footer">
+							<button class="form__btn btn">Buy</button>
+							<div class="form__prise">$ 25.00</div>
+						</div>
+					</form>
+					<div class="popup__text">
+						<p class="popup__text-item">If you are live, work, attend school, or pay property taxes in New York
+							State, you can get a $25 digital library card right now using this online form. Visitors to New
+							York State can also use this form to apply for a temporary card.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal__login modal">
+		<div class="modal__login-body modal-body">
+			<div class="modal__login-content modal-content">
+				<div class="modal__login-close modal-close">
+					<img src="img/close_btn_black.svg" alt="close-btn">
+				</div>
+				<div class="modal__login-title modal-title">Login</div>
+				<div class="modal__login-email">
+					<p class="email-text modal-txt">E-mail or readers card</p>
+					<input type="text" class="email-input modal-input">
+				</div>
+				<div class="modal__login-pass">
+					<p class="pass-text modal-txt">Password</p>
+					<input type="text" class="pass-input modal-input">
+				</div>
+				<button class="modal__login-btn btn">Log In</button>
+				<div class="modal__login-bottom">
+					<div class="modal__login-question modal-qst">Don’t have an account?</div>
+					<a href="#" class="modal__login-link modal-link">Register</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal__register modal">
+		<div class="modal__register-body modal-body">
+			<div class="modal__register-content modal-content">
+				<div class="modal__register-close modal-close">
+					<img src="img/close_btn_black.svg" alt="close-btn">
+				</div>
+				<div class="modal__register-title modal-title">Register</div>
+				<div class="modal__register-fname">
+					<p class="email-text modal-txt">First name</p>
+					<input type="text" class="fname-input modal-input">
+				</div>
+				<div class="modal__register-lname">
+					<p class="pass-text modal-txt">Last name</p>
+					<input type="text" class="lname-input modal-input">
+				</div>
+				<div class="modal__register-email">
+					<p class="pass-text modal-txt">E-mail</p>
+					<input type="text" class="email-input modal-input">
+				</div>
+				<div class="modal__register-pass">
+					<p class="pass-text modal-txt">Password</p>
+					<input type="text" class="pass-input modal-input">
+				</div>
+				<button class="modal__register-btn btn">Sign Up</button>
+				<div class="modal__register-bottom">
+					<div class="modal__register-question modal-qst">Already have an account?</div>
+					<a href="#" class="modal__register-link modal-link">Login</a>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	<script src="js/script.js"></script>
