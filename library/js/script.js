@@ -208,31 +208,30 @@ const loginLinks = document.querySelectorAll('.log-link');
 const loginPopup = document.querySelector('.modal__login');
 const popupClos = document.querySelectorAll('.modal-close');
 
-loginLinks.forEach(function (link, index) {
-	link.dataset.index = index;
-	link.addEventListener('click', function (e) {
-		popupOpen(index + 1);
+loginLinks.forEach(function (logLink, indexLink) {
+	logLink.addEventListener('click', function (e) {
+		modalLoginOpen(indexLink + 1);
 	})
 })
 if (popupClos.length > 0) {
 	for (let i = 0; i < popupClos.length; i++) {
 		const popupCloseIcon = popupClos[i];
 		popupCloseIcon.addEventListener('click', function (e) {
-			popupClose(popupCloseIcon.closest('.modal__login'));
+			modalLoginClose(popupCloseIcon.closest('.modal__login'));
 		});
 	}
 }
-function popupClose(elems) {
+function modalLoginClose(elems) {
 	document.body.classList.remove('_lock');
 	elems.classList.remove('open');
 }
 
-function popupOpen(e) {
+function modalLoginOpen(e) {
 	loginPopup.classList.add('open');
 	dropMenu.classList.remove('_active');
 	loginPopup.addEventListener('click', function (e) {
 		if (!e.target.closest('.modal__login-content')) {
-			popupClose(e.target.closest('.modal__login'));
+			modalLoginClose(e.target.closest('.modal__login'));
 		}
 	})
 }
@@ -240,5 +239,33 @@ function popupOpen(e) {
 
 //Modal-popups_Register
 
+const regLinks = document.querySelectorAll('.reg-link');
+const regPopup = document.querySelector('.modal__register');
 
+regLinks.forEach(function (regLink, indexLink) {
+	regLink.addEventListener('click', function (e) {
+		modalRegOpen(indexLink + 1);
+	})
+})
+if (popupClos.length > 0) {
+	for (let i = 0; i < popupClos.length; i++) {
+		const popupCloseIcon = popupClos[i];
+		popupCloseIcon.addEventListener('click', function (e) {
+			modalRegClose(popupCloseIcon.closest('.modal__register'));
+		});
+	}
+}
+function modalRegClose() {
+	document.body.classList.remove('_lock');
+	regPopup.classList.remove('open');
+}
 
+function modalRegOpen(e) {
+	regPopup.classList.add('open');
+	dropMenu.classList.remove('_active');
+	regPopup.addEventListener('click', function (e) {
+		if (!e.target.closest('.modal__register-content')) {
+			modalRegClose(e.target.closest('.modal__register'));
+		}
+	})
+}
