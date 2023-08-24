@@ -1480,7 +1480,6 @@ input[type='radio'] {
 
 .popup.open .popup__content {
 	opacity: 1;
-	transform: translate(0);
 	transform: perspective(800px) translate(0px, 0px) rotateX(0);
 }
 
@@ -1512,10 +1511,6 @@ input[type='radio'] {
 	transition: all 1s ease 0s;
 }
 
-.close-btn:hover {
-	background-color: red;
-	transition: all 1s ease 0s;
-}
 
 .popup__header {
 	position: absolute;
@@ -1651,6 +1646,7 @@ input[type='radio'] {
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 50;
+	transition: all 0.5s ease 0s;
 }
 
 .modal__login {
@@ -1709,6 +1705,21 @@ input[type='radio'] {
 	margin: 0px 0px 10px 0px;
 }
 
+.modal-input:invalid {
+	border: 1.5px solid rgba(255, 0, 0, 0.342);
+	box-shadow: 0.5px 0.5px 5px rgba(255, 0, 0, 0.342);
+}
+
+.modal-input:valid {
+	border: 1.5px solid rgba(0, 255, 106, 0.342);
+	box-shadow: 0.5px 0.5px 5px rgba(0, 255, 106, 0.342);
+}
+
+.modal-input:not(:focus):invalid {
+	border: 1px solid #BB945F;
+	box-shadow: none;
+}
+
 .pass-input {
 	margin: 0px 0px 20px 0px;
 }
@@ -1756,11 +1767,30 @@ input[type='radio'] {
 
 .modal__register-email {}
 
-
-.modal__register-btn {
+.form-btn {
+	align-self: flex-start;
+	cursor: pointer;
+	border-radius: 2px;
+	border: 1px solid #0C0C0E;
+	background-color: #FFF;
+	min-height: 30px;
+	transition: all 1s ease 0s;
+	color: #0C0C0E;
+	text-align: center;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1px;
 	padding: 0px 5px 0px 5px;
 	margin: 0px 0px 10px 0px;
+	min-width: 70px;
 }
+
+.form-btn:hover {
+	background: #BB945F;
+	border: 1px solid #BB945F;
+	transition: all 0.5s ease 0s;
+}
+
 
 
 .modal-qst {

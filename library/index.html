@@ -875,56 +875,57 @@
 	</div>
 	<div class="modal__login modal">
 		<div class="modal__login-body modal-body">
-			<div class="modal__login-content modal-content">
+			<form id="log-form" class="modal__login-content modal-content">
 				<div class="modal__login-close modal-close">
 					<img src="img/close_btn_black.svg" alt="close-btn">
 				</div>
 				<div class="modal__login-title modal-title">Login</div>
 				<div class="modal__login-email">
 					<p class="email-text modal-txt">E-mail or readers card</p>
-					<input type="text" class="email-input modal-input">
+					<input id="log-email" required type="email" class="email-input modal-input">
 				</div>
 				<div class="modal__login-pass">
 					<p class="pass-text modal-txt">Password</p>
-					<input type="text" class="pass-input modal-input">
+					<input id="log-password" required minlength="8" type="password" class="pass-input modal-input">
 				</div>
-				<button class="modal__login-btn btn">Log In</button>
+				<button type="submit" class="modal__login-btn form-btn">Log In</button>
 				<div class="modal__login-bottom">
 					<div class="modal__login-question modal-qst">Don’t have an account?</div>
 					<a href="#" class="modal__login-link modal-link">Register</a>
 				</div>
-			</div>
+				</а>
+			</form>
 		</div>
 	</div>
 	<div class="modal__register modal">
 		<div class="modal__register-body modal-body">
-			<div class="modal__register-content modal-content">
+			<form action="#" id="reg-form" class="modal__register-content modal-content">
 				<div class="modal__register-close modal-close">
 					<img src="img/close_btn_black.svg" alt="close-btn">
 				</div>
 				<div class="modal__register-title modal-title">Register</div>
 				<div class="modal__register-fname">
-					<p class="email-text modal-txt">First name</p>
-					<input type="text" class="fname-input modal-input">
+					<p class="fname-text modal-txt">First name</p>
+					<input id="reg-name" required type="text" class="fname-input modal-input">
 				</div>
 				<div class="modal__register-lname">
-					<p class="pass-text modal-txt">Last name</p>
-					<input type="text" class="lname-input modal-input">
+					<p class="lname-text modal-txt">Last name</p>
+					<input id="reg-lname" required type="text" class="lname-input modal-input">
 				</div>
 				<div class="modal__register-email">
-					<p class="pass-text modal-txt">E-mail</p>
-					<input type="text" class="email-input modal-input">
+					<p class="email-text modal-txt">E-mail</p>
+					<input id="reg-email" required type="email" class="email-input modal-input">
 				</div>
 				<div class="modal__register-pass">
 					<p class="pass-text modal-txt">Password</p>
-					<input type="text" class="pass-input modal-input">
+					<input id="reg-password" required minlength="8" type="password" class="pass-input modal-input">
 				</div>
-				<button class="modal__register-btn btn">Sign Up</button>
+				<button type="submit" class="modal__register-btn form-btn">Sign Up</button>
 				<div class="modal__register-bottom">
 					<div class="modal__register-question modal-qst">Already have an account?</div>
 					<a href="#" class="modal__register-link modal-link">Login</a>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

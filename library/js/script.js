@@ -25,6 +25,8 @@ document.addEventListener('click', menuDrop);
 function menuDrop(e) {
 	if (e.target.closest('.header__icon-item')) {
 		dropMenu.classList.toggle('_active');
+		menuHeader.classList.remove('_active');
+		menuIcon.classList.remove('_active');
 		e.preventDefault();
 	}
 	if (!e.target.closest('.header__icon')) {
@@ -196,11 +198,8 @@ function bodyUnLock() {
 	body.style.paddingRight = '0px';
 	body.classList.remove('_lock');
 }
-const frmBtn = document.querySelector('.form__btn');
 
-frmBtn.addEventListener('click', function (e) {
-	e.preventDefault();
-})
+
 
 
 //Modal-popups_logIn
@@ -221,9 +220,8 @@ if (popupClos.length > 0) {
 		});
 	}
 }
-function modalLoginClose(elems) {
-	document.body.classList.remove('_lock');
-	elems.classList.remove('open');
+function modalLoginClose(e) {
+	loginPopup.classList.remove('open');
 }
 
 function modalLoginOpen(e) {
@@ -256,7 +254,6 @@ if (popupClos.length > 0) {
 	}
 }
 function modalRegClose() {
-	document.body.classList.remove('_lock');
 	regPopup.classList.remove('open');
 }
 
@@ -269,3 +266,58 @@ function modalRegOpen(e) {
 		}
 	})
 }
+
+
+//Работа с LocalStorage
+
+const regForm = document.getElementById('reg-form');
+const regBtn = document.querySelector('.modal__register-btn');
+
+
+regForm.addEventListener('submit', setToStorage);
+function setToStorage(e) {
+	const regEmail = document.getElementById('reg-email').value;
+	const regPass = document.getElementById('reg-password').value;
+	const regName = document.getElementById('reg-name').value;
+	const regLName = document.getElementById('reg-lname').value;
+	let userInfo = {
+		name: regName,
+		lname: regLName,
+		email: regEmail,
+		password: regPass,
+	}
+	const userStr = JSON.stringify(userInfo);
+	localStorage.setItem(regEmail, userStr);
+	modalRegClose();
+	e.preventDefault();
+	e.target.reset();
+}
+
+const logForm = document.getElementById('log-form');
+logForm.addEventListener('submit', getFromStorage);
+function getFromStorage(e) {
+	const logEmail = document.getElementById('log-email').value;
+	const logPass = document.getElementById('log-password').value;
+
+	const userData = localStorage.getItem(logEmail);
+	const userDataObj = JSON.parse(userData);
+	if (logEmail === null) {
+		alert('Email is wrong! Check email!')
+	} else if (logEmail === userDataObj.email && logPass === userDataObj.password) {
+		modalLoginClose();
+	} else if (logPass !== userDataObj.password) {
+		alert('Password is wrong! Check password!')
+	}
+	e.preventDefault();
+	e.target.reset();
+}
+
+
+
+
+
+
+
+
+
+
