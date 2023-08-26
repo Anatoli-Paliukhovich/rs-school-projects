@@ -184,6 +184,35 @@ body._lock {
 	padding: 15px 0px;
 }
 
+.header__icon-item.hidden {
+	display: none;
+}
+
+.header__user-icon {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background-color: #FFF;
+	display: none;
+	cursor: pointer;
+}
+
+.header__user-icon.active {
+	display: block;
+}
+
+.header__user-icon-item {}
+
+.user-icon__text {
+	display: block;
+	padding: 4px 2px 0px;
+	color: #BB945F;
+	font-size: 15px;
+	line-height: 133.333%;
+	text-align: center;
+
+}
+
 .header__drop-menu.drop-menu._active {
 	visibility: visible;
 	opacity: 1;

@@ -268,7 +268,7 @@ function modalRegOpen(e) {
 }
 
 
-//Работа с LocalStorage
+//LocalStorage
 
 const regForm = document.getElementById('reg-form');
 const regBtn = document.querySelector('.modal__register-btn');
@@ -288,29 +288,69 @@ function setToStorage(e) {
 	}
 	const userStr = JSON.stringify(userInfo);
 	localStorage.setItem(regEmail, userStr);
+
 	modalRegClose();
-	e.preventDefault();
-	e.target.reset();
 }
 
 const logForm = document.getElementById('log-form');
 logForm.addEventListener('submit', getFromStorage);
 function getFromStorage(e) {
+	e.preventDefault();
 	const logEmail = document.getElementById('log-email').value;
 	const logPass = document.getElementById('log-password').value;
 
 	const userData = localStorage.getItem(logEmail);
 	const userDataObj = JSON.parse(userData);
-	if (logEmail === null) {
-		alert('Email is wrong! Check email!')
+	if (userData === null) {
+		alert('Email is wrong! Check email!');
 	} else if (logEmail === userDataObj.email && logPass === userDataObj.password) {
 		modalLoginClose();
 	} else if (logPass !== userDataObj.password) {
-		alert('Password is wrong! Check password!')
+		alert('Password is wrong! Check password!');
 	}
+}
+
+//Set initial letters in user-icon
+regForm.addEventListener('submit', setInitials);
+function setInitials(e) {
+	setToStorage();
 	e.preventDefault();
+	const headerUserIcon = document.querySelector('.header__user-icon');
+	const userIconText = document.querySelector('.user-icon__text');
+
+	const regEmail = document.getElementById('reg-email').value;
+	const userData = localStorage.getItem(regEmail);
+	const userDataObj = JSON.parse(userData);
+	userIconText.innerHTML = `${userDataObj.name[0]}${userDataObj.lname[0]}`;
+	userIconText.setAttribute('title', `${userDataObj.name} ${userDataObj.lname}`);
+	headerIcon.classList.add('hidden');
+	headerUserIcon.classList.add('active');
 	e.target.reset();
 }
+
+//Drop menu in header after sign up
+const headerUserIcon = document.querySelector('.header__user-icon');
+const userIconText = document.querySelector('.user-icon__text');
+headerUserIcon.addEventListener('click', menuDropAfterSignUp);
+function menuDropAfterSignUp(e) {
+	if (e.target.closest('.user-icon__text')) {
+		dropMenu.classList.toggle('_active');
+		menuHeader.classList.remove('_active');
+		menuIcon.classList.remove('_active');
+		e.preventDefault();
+	}
+	if (!e.target.closest('.header__user-icon')) {
+		dropMenu.classList.remove('_active');
+	}
+}
+
+
+
+
+
+
+
+
 
 
 
