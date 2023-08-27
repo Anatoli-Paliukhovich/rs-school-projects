@@ -260,7 +260,8 @@
 											(and her family) exploring how the Windsors have evolved and thrived as the modern
 											world
 											has changed around them.</div>
-										<button disabled class="item-favorites__btn item-favorites__btn-disabled">Own
+										<button class="item-favorites__btn btn">
+											Buy
 										</button>
 									</div>
 
@@ -348,7 +349,8 @@
 											twice her age with the promise to bring her to America. Her marriage is an opportunity
 											for
 											her family to eventually immigrate. For fans of Isabel Allende and Julia Alvarez.</div>
-										<button disabled class="item-favorites__btn item-favorites__btn-disabled">Own
+										<button class="item-favorites__btn btn">
+											Buy
 										</button>
 									</div>
 
@@ -675,11 +677,14 @@
 								<div class="find-card__title">Find your Library card</div>
 								<div class="find-card__block">
 									<form action="#" class="find-card__form">
-										<label for="name" class="find-card__label">Brooklyn Public Library</label>
-										<input placeholder="Reader's name" id="name" type="text" class="find-card__name">
-										<input placeholder="Card number" type="tel" class="find-card__number">
+										<div class="find-card__form-section">
+											<label for="name" class="find-card__label">Brooklyn Public Library</label>
+											<input placeholder="Reader's name" id="name" type="text" class="find-card__name">
+											<input id="number" placeholder="Card number" type="text" class="find-card__number">
+										</div>
+										<button class="find-card__button">Check the card</button>
+										<div class="find-card-info">Block with information</div>
 									</form>
-									<button class="find-card__button">Check the card</button>
 								</div>
 							</div>
 						</div>
@@ -696,72 +701,70 @@
 						</div>
 					</div>
 				</div>
-				<section class="page__cards-after cards-after__dn">
-					<div class="cards-after__container">
-						<div class="cards-after__header header-text">
-							<h2 class="cards-after__title title">Digital Library Cards</h2>
-							<div class="cards-after__decor decor"></div>
-						</div>
-						<div class="cards__body">
-							<div class="cards__find-card">
-								<div class="find-card__item">
-									<div class="find-card__title">Your Library card</div>
-									<div class="find-card__block">
-										<form action="#" class="find-card__form">
+			</section>
+			<section id="card-after" class="cards cards-after">
+				<div class="cards__container">
+					<div class="cards__header header-text">
+						<h2 class="cards__title title">Digital Library Cards</h2>
+						<div class="cards__decor decor"></div>
+					</div>
+					<div class="cards__body">
+						<div class="cards__find-card">
+							<div class="find-card__item">
+								<div class="find-card__title">Your Library card</div>
+								<div class="find-card__block">
+									<form action="#" class="find-card__form">
+										<div class="find-card__form-section">
 											<label for="name" class="find-card__label">Brooklyn Public Library</label>
-											<input placeholder="Reader's name" id="reader-name" type="text"
-												class="find-card__name name-card__after" value="John Doe">
-											<input placeholder="Card number" type="text"
-												class="find-card__number number-card__after" value="F00234030">
-										</form>
-										<div class="find-card__row">
-											<div class="find-card__columns">
-												<div class="find-card__items item-card">
-													<div class="item-card__label">visits</div>
-													<div class="item-card__image">
-														<img src="img/main/cards/01.svg" alt="person">
-													</div>
-													<div class="item-card__number">23</div>
+											<input type="text" class="find-card__name" value="John Doe">
+											<input type="text" class="find-card__number" value="F00234030">
+										</div>
+									</form>
+									<div class="find-card__row">
+										<div class="find-card__columns">
+											<div class="find-card__items item-card">
+												<div class="item-card__label">visits</div>
+												<div class="item-card__image">
+													<img src="img/main/cards/01.svg" alt="person">
 												</div>
+												<div class="item-card__number">23</div>
 											</div>
-											<div class="find-card__columns">
-												<div class="find-card__items item-card">
-													<div class="item-card__label">bonuses</div>
-													<div class="item-card__image">
-														<img src="img/main/cards/02.svg" alt="star">
-													</div>
-													<div class="item-card__number">1240</div>
+										</div>
+										<div class="find-card__columns">
+											<div class="find-card__items item-card">
+												<div class="item-card__label">bonuses</div>
+												<div class="item-card__image">
+													<img src="img/main/cards/02.svg" alt="star">
 												</div>
+												<div class="item-card__number">1240</div>
 											</div>
-											<div class="find-card__columns">
-												<div class="find-card__items item-card">
-													<div class="item-card__label">Books</div>
-													<div class="item-card__image">
-														<img src="img/main/cards/03.svg" alt="books">
-													</div>
-													<div class="item-card__number">2</div>
+										</div>
+										<div class="find-card__columns">
+											<div class="find-card__items item-card">
+												<div class="item-card__label">Books</div>
+												<div class="item-card__image">
+													<img src="img/main/cards/03.svg" alt="books">
 												</div>
+												<div class="item-card__number">2</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="cards__get-card">
-								<div class="get-card__item">
-									<div class="get-card__title">Visit your profile</div>
-									<div class="get-card__text">With a digital library card you get free access to the
-										Library’s
-										wide array of digital resources including e-books, databases, educational resources,
-										and
-										more.</div>
-									<div class="get-card__buttons">
-										<button class="get-card__link get-card__link-profile">Profile</button>
-									</div>
+						</div>
+						<div class="cards__get-card">
+							<div class="get-card__item">
+								<div class="get-card__title">Visit your profile</div>
+								<div class="get-card__text">With a digital library card you get free access to the Library’s
+									wide array of digital resources including e-books, databases, educational resources, and
+									more.</div>
+								<div class="get-card__buttons">
+									<button class="get-card__link get-card__link-login log-link">Profile</button>
 								</div>
 							</div>
 						</div>
 					</div>
-				</section>
+				</div>
 			</section>
 		</main>
 		<footer class="footer">
@@ -887,7 +890,7 @@
 				<div class="modal__login-title modal-title">Login</div>
 				<div class="modal__login-email">
 					<p class="email-text modal-txt">E-mail or readers card</p>
-					<input id="log-email" required type="email" class="email-input modal-input">
+					<input id="log-email" required type="text" class="email-input modal-input">
 				</div>
 				<div class="modal__login-pass">
 					<p class="pass-text modal-txt">Password</p>

@@ -149,57 +149,14 @@ function showPopup(e) {
 	}
 }
 */
-//Popups
-
+//Popup_favourites_before_login
 const popupBtns = document.querySelectorAll('.btn');
-const body = document.querySelector('body');
-const lock = document.querySelectorAll('.lock-padding');
-const popupCloseIcons = document.querySelectorAll('.close-btn');
-const popup = document.querySelector('.popup');
-
 popupBtns.forEach(function (btn, index) {
 	btn.dataset.index = index;
 	btn.addEventListener('click', function (e) {
-		popupOpen(index + 1);
+		modalLoginOpen(index + 1);
 	})
 })
-
-if (popupCloseIcons.length > 0) {
-	for (let i = 0; i < popupCloseIcons.length; i++) {
-		const popupCloseIcon = popupCloseIcons[i];
-		popupCloseIcon.addEventListener('click', function (e) {
-			popupClose(popupCloseIcon.closest('.popup'));
-		});
-	}
-}
-function popupClose(elems) {
-	document.body.classList.remove('_lock');
-	elems.classList.remove('open');
-	bodyUnLock();
-}
-
-function popupOpen(e) {
-	popup.classList.add('open');
-	bodyLock();
-	clearInterval(setInt);
-	popup.addEventListener('click', function (e) {
-		if (!e.target.closest('.popup__content')) {
-			popupClose(e.target.closest('.popup'));
-		}
-	})
-}
-
-function bodyLock() {
-	body.style.paddingRight = '17px';
-	body.classList.add('_lock');
-}
-
-function bodyUnLock() {
-	body.style.paddingRight = '0px';
-	body.classList.remove('_lock');
-}
-
-
 
 
 //Modal-popups_logIn
@@ -285,11 +242,13 @@ function setToStorage(e) {
 		lname: regLName,
 		email: regEmail,
 		password: regPass,
+		function: randomNumber(),
 	}
 	const userStr = JSON.stringify(userInfo);
-	localStorage.setItem(regEmail, userStr);
-
+	localStorage.setItem(`${userInfo.name} ${userInfo.lname}`, userStr);
+	localStorage.setItem(regPass, userStr);
 	modalRegClose();
+	e.preventDefault();
 }
 
 const logForm = document.getElementById('log-form');
@@ -298,35 +257,55 @@ function getFromStorage(e) {
 	e.preventDefault();
 	const logEmail = document.getElementById('log-email').value;
 	const logPass = document.getElementById('log-password').value;
-
-	const userData = localStorage.getItem(logEmail);
+	const userData = localStorage.getItem(logPass);
 	const userDataObj = JSON.parse(userData);
 	if (userData === null) {
-		alert('Email is wrong! Check email!');
-	} else if (logEmail === userDataObj.email && logPass === userDataObj.password) {
-		modalLoginClose();
-	} else if (logPass !== userDataObj.password) {
 		alert('Password is wrong! Check password!');
+	} else if (logPass === userDataObj.password && logEmail === userDataObj.email || logEmail === userDataObj.function && logPass === userDataObj.password) {
+		modalLoginClose();
+		dropMenuAfterLogin();
+		popupFavoritesAfterLogin();
+	} else if (logEmail !== userDataObj.email) {
+		alert('Email is wrong! Check email');
 	}
 }
-
-//Set initial letters in user-icon
-regForm.addEventListener('submit', setInitials);
-function setInitials(e) {
-	setToStorage();
-	e.preventDefault();
+//Set initial letters in user-icon_after_login
+logForm.addEventListener('submit', setInitialChar);
+function setInitialChar(e) {
 	const headerUserIcon = document.querySelector('.header__user-icon');
 	const userIconText = document.querySelector('.user-icon__text');
+	const dropMenuTitle = document.querySelector('.drop-menu__title');
 
-	const regEmail = document.getElementById('reg-email').value;
-	const userData = localStorage.getItem(regEmail);
+	const logPassword = document.getElementById('log-password').value;
+	const userData = localStorage.getItem(logPassword);
 	const userDataObj = JSON.parse(userData);
+	dropMenuTitle.innerHTML = `${userDataObj.function}`;
+	dropMenuTitle.style.fontSize = '12px';
 	userIconText.innerHTML = `${userDataObj.name[0]}${userDataObj.lname[0]}`;
 	userIconText.setAttribute('title', `${userDataObj.name} ${userDataObj.lname}`);
 	headerIcon.classList.add('hidden');
 	headerUserIcon.classList.add('active');
-	e.target.reset();
 }
+
+
+//Set initial letters in user-icon && randomNumber_in_Profile
+regForm.addEventListener('submit', setInitials);
+function setInitials(e) {
+	const headerUserIcon = document.querySelector('.header__user-icon');
+	const userIconText = document.querySelector('.user-icon__text');
+	const dropMenuTitle = document.querySelector('.drop-menu__title');
+
+	const regPassword = document.getElementById('reg-password').value;
+	const userData = localStorage.getItem(regPassword);
+	const userDataObj = JSON.parse(userData);
+	dropMenuTitle.innerHTML = `${userDataObj.function}`;
+	dropMenuTitle.style.fontSize = '12px';
+	userIconText.innerHTML = `${userDataObj.name[0]}${userDataObj.lname[0]}`;
+	userIconText.setAttribute('title', `${userDataObj.name} ${userDataObj.lname}`);
+	headerIcon.classList.add('hidden');
+	headerUserIcon.classList.add('active');
+}
+
 
 //Drop menu in header after sign up
 const headerUserIcon = document.querySelector('.header__user-icon');
@@ -343,6 +322,164 @@ function menuDropAfterSignUp(e) {
 		dropMenu.classList.remove('_active');
 	}
 }
+
+//Function_that_generates_a_random_number
+function randomNumber(l) {
+	l = 9;
+	let result = '';
+	for (let i = 0; i < l; i++) {
+		result = result + (Math.floor(Math.random() * 16).toString(16));
+	}
+	return result;
+}
+//Drop_menu_after_log_in
+
+function dropMenuAfterLogin(e) {
+	const loginText = document.querySelector('.drop-menu__login');
+	const registerText = document.querySelector('.drop-menu__register');
+	const decor = document.querySelector('.drop-menu__decor');
+	const dropMenu = document.querySelector('.header__drop-menu');
+	loginText.innerHTML = `My profile`;
+	registerText.innerHTML = `Log Out`;
+	loginText.style.cssText = `
+	color: #000;
+	text-align: center;
+	font-family: Inter;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 400;
+	line-height:  133.333%;
+	margin: 0px 0px 10px 0px;
+	cursor: pointer;
+	`;
+	registerText.style.cssText = `
+	color: #000;
+	font-family: Inter;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 133.333%;
+	margin: 0px 0px 15px 0px;
+	cursor: pointer;
+	`;
+	decor.style.cssText = `
+	width: 40px;
+	height: 1px;
+	background-color: #BB945F;
+	margin: 0px 0px 15px 0px;
+	`;
+	dropMenu.style.cssText = `
+	display: flex;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	padding: 5px 0px;
+	flex-direction: column;
+	height: 115px;
+	width: 80px;
+	background-color: #FFF;
+	align-items: center;
+	transition: all 0.7s ease 0s;
+	`;
+}
+//Popup_favourites_after_login
+function popupFavoritesAfterLogin(e) {
+	const popupBtns = document.querySelectorAll('.btn');
+	const body = document.querySelector('body');
+	const popupCloseIcons = document.querySelectorAll('.close-btn');
+	const popup = document.querySelector('.popup');
+
+	popupBtns.forEach(function (btn, index) {
+		btn.dataset.index = index;
+		btn.addEventListener('click', function (e) {
+			popupOpen(index + 1);
+		})
+	})
+
+	if (popupCloseIcons.length > 0) {
+		for (let i = 0; i < popupCloseIcons.length; i++) {
+			const popupCloseIcon = popupCloseIcons[i];
+			popupCloseIcon.addEventListener('click', function (e) {
+				popupClose(popupCloseIcon.closest('.popup'));
+			});
+		}
+	}
+	function popupClose(elems) {
+		document.body.classList.remove('_lock');
+		elems.classList.remove('open');
+		bodyUnLock();
+	}
+
+	function popupOpen(e) {
+		popup.classList.add('open');
+		modalLoginClose();
+		bodyLock();
+		popup.addEventListener('click', function (e) {
+			if (!e.target.closest('.popup__content')) {
+				popupClose(e.target.closest('.popup'));
+			}
+		})
+	}
+
+	function bodyLock() {
+		body.style.paddingRight = '17px';
+		body.classList.add('_lock');
+	}
+
+	function bodyUnLock() {
+		body.style.paddingRight = '0px';
+		body.classList.remove('_lock');
+	}
+}
+
+//After_sign_up_digital_libary_card
+
+const digLibrCardBtn = document.querySelector('.find-card__button');
+digLibrCardBtn.addEventListener('click', setLibrCardForm);
+function setLibrCardForm(e) {
+	e.preventDefault();
+	const readerName = document.getElementById('name').value;
+	const readerNumber = document.getElementById('number').value;
+	const readerData = localStorage.getItem(readerName);
+	const readerDataObj = JSON.parse(readerData);
+
+	if (readerData === null) {
+
+	} else if (readerName === `${readerDataObj.name} ${readerDataObj.lname}` && readerNumber === readerDataObj.function) {
+		showInfoInterval();
+	} else {
+		alert(`Number is wrong! Check number!`);
+	}
+}
+//Set_10sec_info
+function showInfoInterval() {
+	setTimeout(function () {
+		const digLibrCardInfo = document.querySelector('.find-card-info');
+		digLibrCardBtn.classList.add('hidden');
+		digLibrCardInfo.classList.add('active')
+	})
+	setTimeout(function (e) {
+		const digLibrCardInfo = document.querySelector('.find-card-info');
+		digLibrCardBtn.classList.remove('hidden');
+		digLibrCardInfo.classList.remove('active');
+		document.getElementById('name').value = '';
+		document.getElementById('number').value = '';
+	}, 10000)
+}
+
+//After_log_in_digital_libary_card
+logForm.addEventListener('submit', showCardAfterLogin)
+function showCardAfterLogin(e) {
+	e.preventDefault();
+	const cardBefore = document.querySelector('.page__cards');
+	const cardAfter = document.querySelector('.cards-after');
+	cardBefore.classList.add('hidden');
+	cardAfter.classList.add('active');
+}
+
+
+
+
 
 
 
