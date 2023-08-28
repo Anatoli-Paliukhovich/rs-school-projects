@@ -381,6 +381,41 @@ function dropMenuAfterLogin(e) {
 	align-items: center;
 	transition: all 0.7s ease 0s;
 	`;
+	//Drop_menu_links_after_log_in_
+
+
+	//Drop_menu_profile_link_after_log_in_
+	const profileLinks = document.querySelectorAll('.profile-link');
+	const profileModal = document.querySelector('.profile');
+	const popupCloseIcons = document.querySelectorAll('.modal-close');
+	profileLinks.forEach(function (link, index) {
+		link.addEventListener('click', function (e) {
+			modalProfileOpen(index + 1);
+		});
+	})
+	if (popupCloseIcons.length > 0) {
+		for (let i = 0; i < popupCloseIcons.length; i++) {
+			const popupCloseIcon = popupCloseIcons[i];
+			popupCloseIcon.addEventListener('click', function (e) {
+				modalProfileClose(popupCloseIcon.closest('.profile'));
+			});
+		}
+	}
+	function modalProfileClose(elem) {
+		elem.classList.remove('active');
+	}
+
+	function modalProfileOpen(e) {
+		profileModal.classList.add('active');
+		modalLoginClose();
+		profileModal.addEventListener('click', function (e) {
+			if (!e.target.closest('.profile__content')) {
+				modalProfileClose(e.target.closest('.profile'));
+			}
+		})
+	}
+	//Drop_menu_logout_link_after_log_in_
+	
 }
 //Popup_favourites_after_login
 function popupFavoritesAfterLogin(e) {
@@ -476,6 +511,9 @@ function showCardAfterLogin(e) {
 	cardBefore.classList.add('hidden');
 	cardAfter.classList.add('active');
 }
+
+
+
 
 
 
