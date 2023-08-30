@@ -45,13 +45,19 @@
 					<div class="header__drop-menu drop-menu">
 						<div class="drop-menu__title">Profile</div>
 						<div class="drop-menu__decor"></div>
-						<div class="drop-menu__login log-link profile-link">Log In</div>
+						<div class="drop-menu__login log-link">Log In</div>
 						<div class="drop-menu__register reg-link">Register</div>
 					</div>
 					<div class="header__user-icon">
 						<a href="" class="header__user-icon-item">
 							<span class="user-icon__text"></span>
 						</a>
+						<div class="drop-menu-after-login">
+							<div class="drop-menu__title">Profile</div>
+							<div class="drop-menu__decor"></div>
+							<div class="profile-link">My profile</div>
+							<div class="profile-logout">Log Out</div>
+						</div>
 					</div>
 				</div>
 				<div class="menu__icon">
@@ -716,8 +722,8 @@
 									<form action="#" class="find-card__form">
 										<div class="find-card__form-section">
 											<label for="name" class="find-card__label">Brooklyn Public Library</label>
-											<input type="text" class="find-card__name" value="John Doe">
-											<input type="text" class="find-card__number" value="F00234030">
+											<input id="cardName" type="text" class="find-card__name" value="John Doe">
+											<input id="cardNumber" type="text" class="find-card__number" value="F00234030">
 										</div>
 									</form>
 									<div class="find-card__row">
@@ -727,7 +733,7 @@
 												<div class="item-card__image">
 													<img src="img/main/cards/01.svg" alt="person">
 												</div>
-												<div class="item-card__number">23</div>
+												<div class="item-card__number visit">23</div>
 											</div>
 										</div>
 										<div class="find-card__columns">
@@ -843,28 +849,28 @@
 					<form action="#" class="popup__form">
 						<div class="form__card-number">
 							<p class="card-number__title frm-title">Bank card number</p>
-							<input class="card-number__input frm-inp" type="text">
+							<input required class="card-number__input frm-inp" type="text">
 						</div>
 						<div class="form__exp-code">
 							<div class="exp-code__title frm-title">Expiration code</div>
-							<input class="exp-code__input frm-inp" type="text">
-							<input class="exp-code__input frm-inp" type="text">
+							<input required maxlength="2" minlength="2" class="exp-code__input frm-inp" type="number">
+							<input required maxlength="2" minlength="2" class="exp-code__input frm-inp" type="number">
 						</div>
 						<div class="form__cvc">
 							<div class="cvc__title frm-title">CVC</div>
-							<input class="cvc__input frm-inp" type="text">
+							<input required maxlength="3" minlength="3" class="cvc__input frm-inp" type="text">
 						</div>
 						<div class="form__cardholder-name">
 							<div class="cardholder-name__title frm-title">Cardholder name</div>
-							<input class="cardholder-name__input frm-inp" type="text">
+							<input required class="cardholder-name__input frm-inp" type="text">
 						</div>
 						<div class="form__postal-code">
 							<div class="postal-code__title frm-title">Postal code</div>
-							<input class="postal-code__input frm-inp" type="text">
+							<input required class="postal-code__input frm-inp" type="text">
 						</div>
 						<div class="form__city-town">
 							<div class="city-town__title frm-title">City / Town</div>
-							<input class="city-town__input frm-inp" type="text">
+							<input required class="city-town__input frm-inp" type="text">
 						</div>
 						<div class="form__footer">
 							<button class="form__btn btn">Buy</button>
@@ -957,7 +963,7 @@
 								<div class="item-card__image">
 									<img src="img/main/cards/01.svg" alt="person">
 								</div>
-								<div class="item-card__number">23</div>
+								<div class="item-card__number visit">23</div>
 							</div>
 						</div>
 						<div class="find-card__columns profile-columns">
@@ -990,6 +996,7 @@
 						<div class="card-num__text">Card number</div>
 						<div class="card-num__digits">F00234030</div>
 						<a class="card-num__btn">
+							<span class="alert">Copied!</span>
 							<img src="img/card-num__btn.svg" alt="copybutton">
 						</a>
 					</div>
