@@ -783,7 +783,36 @@ input[type='radio'] {
 	letter-spacing: 1px;
 }
 
+.item-favorites__btn {
+
+	align-self: flex-start;
+	cursor: pointer;
+	padding: 0 27px;
+	border-radius: 2px;
+	border: 1px solid #0C0C0E;
+	background-color: #FFF;
+	min-height: 30px;
+	transition: all 1s ease 0s;
+	color: #0C0C0E;
+	text-align: center;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.item-favorites__btn.hidden {
+	display: none;
+}
+
+.item-favorites__btn:hover {
+	background: #BB945F;
+	border: 1px solid #BB945F;
+	transition: all 0.5s ease 0s;
+}
+
+
 .item-favorites__btn-disabled {
+	display: block;
 	border: 1px solid #BB945F;
 	background-color: #FFF;
 	min-height: 30px;
@@ -1151,14 +1180,6 @@ input[type='radio'] {
 
 .find-card-info.active {
 	display: inline-block;
-	padding: 12.7px 40px;
-	background-color: #0C0C0E;
-	color: #BB945F;
-	text-align: center;
-	font-size: 20px;
-	font-weight: 700;
-	letter-spacing: 1px;
-	margin: 0px 0px 30px 0px;
 	transition: all 1s ease 0s;
 }
 
@@ -1496,6 +1517,10 @@ input[type='radio'] {
 	transition: all 1s ease 0s;
 }
 
+.popup.hidden {
+	display: none;
+}
+
 .open {
 	visibility: visible;
 	opacity: 1;
@@ -1584,6 +1609,21 @@ input[type='radio'] {
 	height: 20px;
 }
 
+.frm-inp:invalid {
+	border: 1.5px solid rgba(255, 0, 0, 0.342);
+	box-shadow: 0.5px 0.5px 5px rgba(255, 0, 0, 0.342);
+}
+
+.frm-inp:valid {
+	border: 1.5px solid rgba(0, 255, 106, 0.342);
+	box-shadow: 0.5px 0.5px 5px rgba(0, 255, 106, 0.342);
+}
+
+.frm-inp:not(:focus):invalid {
+	border: 1px solid #BB945F;
+	box-shadow: none;
+}
+
 .card-number__input {}
 
 .form__exp-code {}
@@ -1633,11 +1673,11 @@ input[type='radio'] {
 	padding: 0px 0px 40px 0px;
 }
 
-.form__btn {}
-
-.btn {
+.form__btn {
 	width: 75px;
 }
+
+.btn {}
 
 .form__prise {
 	align-self: flex-end;
@@ -1872,8 +1912,8 @@ input[type='radio'] {
 .profile__content {
 	display: flex;
 	margin: 0 auto;
-	min-width: 600px;
-	max-height: 400px;
+	width: 600px;
+	height: 400px;
 	position: relative;
 	background-color: #FFF;
 }
@@ -1967,7 +2007,13 @@ input[type='radio'] {
 }
 
 
-.content__books {}
+.content__books {
+	width: 400px;
+	height: 60px;
+	margin: 0px 0px 30px 0px;
+	overflow: auto;
+
+}
 
 .books__title {
 	color: #0C0C0E;
@@ -1976,10 +2022,7 @@ input[type='radio'] {
 	margin: 0px 0px 30px 0px;
 }
 
-.books__list {
-
-	margin: 0px 0px 40px 0px;
-}
+.books__list {}
 
 .books__list>li {
 	position: relative;

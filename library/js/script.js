@@ -118,17 +118,17 @@ sliderDots.forEach(function (dot, indexDot) {
 	dot.addEventListener('click', function () {
 		i = indexDot;
 		combineFunc(i)
-		clearInterval(setInt);
+		//clearInterval(setInt);
 	})
 });
 function combineFunc(i) {
 	activeSlide(i);
 	activeLabel(i);
 }
-const setInt = setInterval(nextSlide, 3000);
+//const setInt = setInterval(nextSlide, 3000);
 
 //Popup_favourites_before_login
-const popupBtns = document.querySelectorAll('.btn');
+const popupBtns = document.querySelectorAll('.item-favorites__btn');
 popupBtns.forEach(function (btn, index) {
 	btn.dataset.index = index;
 	btn.addEventListener('click', function (e) {
@@ -340,20 +340,65 @@ function randomNumber(l) {
 }
 
 
+
+
 //Popup_favourites_after_login
 function popupFavoritesAfterLogin(e) {
-	const popupBtns = document.querySelectorAll('.btn');
-	const body = document.querySelector('body');
+	const popupBtns = document.querySelectorAll('.item-favorites__btn');
 	const popupCloseIcons = document.querySelectorAll('.close-btn');
 	const popup = document.querySelector('.popup');
+	const popupForm = document.querySelector('.popup__form');
+	const favoritesBlock = document.querySelector('.page__favorites');
 
-	popupBtns.forEach(function (btn, index) {
-		btn.dataset.index = index;
-		btn.addEventListener('click', function (e) {
-			popupOpen(index + 1);
-		})
-	})
+	let lastClickedBtn = null;
 
+	popupBtns.forEach((button, index) => {
+		button.addEventListener('click', () => {
+			lastClickedBtn = button;
+		});
+	});
+	popupForm.addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		if (lastClickedBtn) {
+			const infoBlock = lastClickedBtn.closest('.favorites__content');
+			const autorInfo = infoBlock.querySelector('.item-favorites__author>span').textContent;
+			const titleInfo = infoBlock.querySelector('.item-favorites__title').textContent;
+			const profileInfo = document.querySelector('.books__list');
+			const newElem = document.createElement('li');
+			newElem.classList.add('books__item');
+			newElem.innerHTML = `${titleInfo}, ${autorInfo}`;
+			profileInfo.append(newElem);
+			lastClickedBtn.outerHTML = `<button class="item-favorites__btn-disabled" disabled>Own</button>`;
+			lastClickedBtn.setAttribute('disabled', 'disabled');
+		}
+	});
+
+	favoritesBlock.addEventListener('click', showPopupOnClick);
+	function showPopupOnClick(event) {
+		if (event.target.closest('.item-favorites__btn')) {
+			popupOpen();
+			popupForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				popupClose();
+				popup.classList.add('hidden');
+				popupBtns.forEach(function (btn, index) {
+					btn.addEventListener('click', function (e) {
+						const infoBlock = btn.closest('.favorites__content');
+						const autorInfo = infoBlock.querySelector('.item-favorites__author>span').textContent;
+						const titleInfo = infoBlock.querySelector('.item-favorites__title').textContent;
+						const profileInfo = document.querySelector('.books__list');
+						const newElem = document.createElement('li');
+						newElem.classList.add('books__item');
+						newElem.innerHTML = `${titleInfo}, ${autorInfo}`;
+						profileInfo.append(newElem);
+						btn.outerHTML = `<button class="item-favorites__btn-disabled" disabled>Own</button>`;
+						btn.setAttribute('disabled', 'disabled');
+					})
+				});
+			})
+		}
+	}
 	if (popupCloseIcons.length > 0) {
 		for (let i = 0; i < popupCloseIcons.length; i++) {
 			const popupCloseIcon = popupCloseIcons[i];
@@ -365,30 +410,19 @@ function popupFavoritesAfterLogin(e) {
 	function popupClose(e) {
 		document.body.classList.remove('_lock');
 		popup.classList.remove('open');
-		bodyUnLock();
 	}
 
 	function popupOpen(e) {
 		popup.classList.add('open');
 		modalLoginClose();
-		bodyLock();
 		popup.addEventListener('click', function (e) {
 			if (!e.target.closest('.popup__content')) {
 				popupClose(e.target.closest('.popup'));
 			}
 		})
 	}
-
-	function bodyLock() {
-		body.style.paddingRight = '17px';
-		body.classList.add('_lock');
-	}
-
-	function bodyUnLock() {
-		body.style.paddingRight = '0px';
-		body.classList.remove('_lock');
-	}
 }
+
 
 //After_sign_up_digital_libary_card
 
@@ -492,12 +526,26 @@ profileLogoutLink.addEventListener('click', function (e) {
 	window.location.reload();
 })
 
-//Add_count_visits
+//Add_count_visits_after_login
 logForm.addEventListener('submit', setCount);
 function setCount(e) {
 	let countNum = JSON.parse(localStorage.getItem("counter"));
 	if (countNum === null) {
-		countNum = 1;
+		countNum = 0;
+	}
+	countNum += 1;
+	localStorage.setItem("counter", countNum);
+	const visit = document.querySelectorAll('.visit');
+	visit.forEach(function (item) {
+		item.innerHTML = countNum;
+	})
+}
+//Add_count_visits_after_register
+regForm.addEventListener('submit', setCount);
+function setCount(e) {
+	let countNum = JSON.parse(localStorage.getItem("counter"));
+	if (countNum === null) {
+		countNum = 0;
 	}
 	countNum += 1;
 	localStorage.setItem("counter", countNum);
@@ -507,15 +555,7 @@ function setCount(e) {
 	})
 }
 
-
-
-
-
-
-
-
-
-
+//Disable_favourites-btn_after_submiting_form
 
 
 
