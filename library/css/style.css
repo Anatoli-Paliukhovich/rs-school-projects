@@ -111,8 +111,6 @@ body._lock {
 	padding: 0 0 20px 0;
 }
 
-
-
 /*-------------Header------------------------------*/
 .header {
 	position: absolute;
@@ -180,6 +178,7 @@ body._lock {
 	padding: 15px 0px;
 }
 
+
 .header__icon-item.hidden {
 	display: none;
 }
@@ -211,7 +210,6 @@ body._lock {
 	visibility: visible;
 	opacity: 1;
 }
-
 
 .drop-menu {
 	visibility: hidden;
@@ -269,7 +267,6 @@ body._lock {
 .hidden {
 	display: none;
 }
-
 
 .menu__icon {
 	display: none;
@@ -532,6 +529,7 @@ body._lock {
 	color: #000;
 	font-size: 12px;
 	font-weight: 700;
+
 }
 
 .swiper .swiper-button-next:after {
@@ -540,7 +538,6 @@ body._lock {
 	font-weight: 700;
 }
 
-
 @media (min-width: 569px) {
 	.swiper {
 		max-width: 635px;
@@ -548,7 +545,6 @@ body._lock {
 		margin: 0px 0px 30px 0px;
 	}
 
-	.swiper-pagination {}
 }
 
 @media (min-width: 1024px) {
@@ -1061,7 +1057,6 @@ input[type='radio'] {
 
 	.contacts__column {
 		flex: 0 1 100%;
-
 	}
 
 	.contacts__image {
@@ -1275,7 +1270,6 @@ input[type='radio'] {
 
 	.find-card__block {
 		flex: 0 1 100%;
-
 	}
 
 	.get-card__text {
@@ -1342,13 +1336,6 @@ input[type='radio'] {
 	letter-spacing: 0.2px;
 	text-transform: capitalize;
 }
-
-
-
-/*----------------------------------------------*/
-
-
-
 
 /*-------------Footer-----------------*/
 .footer {
@@ -1520,7 +1507,6 @@ input[type='radio'] {
 .popup.hidden {
 	display: none;
 }
-
 .open {
 	visibility: visible;
 	opacity: 1;
@@ -1559,7 +1545,6 @@ input[type='radio'] {
 	cursor: pointer;
 	transition: all 1s ease 0s;
 }
-
 
 .popup__header {
 	position: absolute;
@@ -1835,14 +1820,11 @@ input[type='radio'] {
 	margin: 0px 0px 10px 0px;
 	min-width: 75px;
 }
-
-
 .form-btn:hover {
 	background: #BB945F;
 	border: 1px solid #BB945F;
 	transition: all 0.5s ease 0s;
 }
-
 .modal-qst {
 	display: inline-block;
 	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
