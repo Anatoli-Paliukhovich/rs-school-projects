@@ -689,7 +689,7 @@ input[type='radio'] {
 	min-height: 555px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 680px) {
 	.favorites__columns {
 		height: 555px;
 	}
@@ -1818,19 +1818,6 @@ input[type='radio'] {
 	transition: all 1s ease 0s;
 }
 
-.modal__register-title {}
-
-
-.modal__register-fname {}
-
-.fname-input {}
-
-.modal__register-lname {}
-
-.lname-input {}
-
-.modal__register-email {}
-
 .form-btn {
 	align-self: flex-start;
 	cursor: pointer;
@@ -1846,16 +1833,15 @@ input[type='radio'] {
 	letter-spacing: 1px;
 	padding: 0px 5px 0px 5px;
 	margin: 0px 0px 10px 0px;
-	min-width: 70px;
+	min-width: 75px;
 }
+
 
 .form-btn:hover {
 	background: #BB945F;
 	border: 1px solid #BB945F;
 	transition: all 0.5s ease 0s;
 }
-
-
 
 .modal-qst {
 	display: inline-block;
@@ -1919,7 +1905,7 @@ input[type='radio'] {
 }
 
 
-.modal__login-close {
+.modal__login-profile-close {
 	position: absolute;
 	top: 25px;
 	right: 25px;
