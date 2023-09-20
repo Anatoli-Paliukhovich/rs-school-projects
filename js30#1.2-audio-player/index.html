@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800&dispay=swap" rel="stylesheet">
+	<title>js30#1.2-audio-player</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main__page">
+			<div class="player__container">
+				<div class="player">
+					<div class="player__title">Audio Player</div>
+					<div class="player__logo">
+						<img class="palyer__img" src="img/logo1.png" alt="logo">
+					</div>
+					<div class="player__song-author">Eminem</div>
+					<div class="player__song-title">Song Title</div>
+					<audio class="song" src="audio/Eminem - Just Lose It.mp3"></audio>
+					<div class="player__progress">
+						<div class="player__progress-item"></div>
+						<div class="player__time">
+							<div class="time-played">00.00</div>
+							<div class="time-total">00.00</div>
+						</div>
+					</div>
+					<div class="player__controls">
+						<div class="player__btn prev">
+							<img src="img/prev.svg" alt="previous">
+						</div>
+						<div class="player__btn play">
+							<img src="img/play.svg" alt="play">
+						</div>
+						<div class="player__btn pause">
+							<img src="img/next.svg" alt="next">
+						</div>
+					</div>
+					<div class="player__extra-btns">
+						<div class="extra-btns-repeat">
+							<img src="img/repeat.svg" alt="repeat">
+						</div>
+						<div class="extra-btns-mix">
+							<img src="img/mix.svg" alt="mix">
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<a target="blank" href="https://github.com/Anatoli-Paliukhovich" class="footer__link-githab">GitHub</a>
+				<div class="footer__text">2023</div>
+				<a target="blank" href="https://app.rs.school/" class="footer__link-rsschool">
+					<img src="img/rs_school_js.svg" alt="rsschool">
+				</a>
+			</div>
+		</footer>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
