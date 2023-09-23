@@ -68,18 +68,34 @@ body {
 /*-----------------------------------------------------*/
 .main__page {
 	flex: 1 1 auto;
-	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+
+.page__backgroung {
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
 }
 
 .player {
+	z-index: 1;
+	position: relative;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 15px;
 	padding: 25px;
-	width: 320px;
-	height: 540px;
+	max-width: 320px;
+	max-height: 540px;
 	border-radius: 30px;
 	background: #000;
 	opacity: 1;

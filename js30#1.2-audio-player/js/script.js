@@ -15,6 +15,7 @@ const songCurrentTime = document.querySelector('.time-played');
 const songDurationTime = document.querySelector('.time-total');
 const repeatBtn = document.querySelector('.repeat-img1');
 const repeatBtnActive = document.querySelector('.icon-repeat2');
+const pageBackground = document.querySelector('.page__backgroung');
 
 
 
@@ -32,6 +33,7 @@ function currentSong(song) {
 	songTitle.innerHTML = song;
 	songAudio.src = `audio/${song}.mp3`;
 	playerImg.src = `img/logo${currentIndSong + 1}.jpg`;
+	pageBackground.src = `img/logo${currentIndSong + 1}.jpg`;
 }
 currentSong(playTitle[currentIndSong]);
 
@@ -117,3 +119,19 @@ function removeRepeat() {
 	repeatBtnActive.classList.remove('active');
 	songAudio.loop = false;
 }
+
+let mouseDownClick = false;
+function move(event) {
+	const moveTime = (event.offsetX / progress.clientWidth) * songAudio.duration
+	songAudio.currentTime = moveTime;
+}
+progress.addEventListener("click", move)
+progress.addEventListener("mousemove", function (e) {
+	mouseDownClick && move(e);
+});
+progress.addEventListener("mousedown", function (e) {
+	mouseDownClick = true
+});
+progress.addEventListener("mouseup", function (e) {
+	mouseDownClick = false;
+})
