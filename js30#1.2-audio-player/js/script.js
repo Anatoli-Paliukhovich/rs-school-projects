@@ -14,7 +14,7 @@ const songAudio = document.querySelector('.song');
 const songCurrentTime = document.querySelector('.time-played');
 const songDurationTime = document.querySelector('.time-total');
 const repeatBtn = document.querySelector('.repeat-img1');
-const repeatBtnActive = document.querySelector('.repeat-img2');
+const repeatBtnActive = document.querySelector('.icon-repeat2');
 
 
 
