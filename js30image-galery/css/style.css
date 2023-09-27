@@ -144,12 +144,39 @@ body {
 
 .main {
 	flex: 1 1 auto;
-	padding: 90px 15px;
+	padding: 90px 0 10px 0;
+	background-color: black;
 }
 
 .main__container {}
 
 .main__body {}
+
+.gallery__row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 10px 0px 0px 0px;
+}
+
+.gallery__column {
+	flex: 0 1 32%;
+	position: relative;
+	padding: 0px 0px 20% 0px;
+}
+
+.gallery-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50px;
+}
 
 /*--------------Footer-----------------------*/
 .footer {
