@@ -64,6 +64,17 @@ function showImg() {
 }
 window.onload = showImg;
 
+document.addEventListener('keydown', function (e) {
+		bird.src = `img/birdwingsdown.png`;
+		moveBird();
+});
+
+document.addEventListener('keyup', function (e) {
+		bird.src = `img/birdwingsup.png`;
+		moveBird();
+
+});
+
 function moveBird() {
 	birdY -= 35;
 	birdSound.play();
