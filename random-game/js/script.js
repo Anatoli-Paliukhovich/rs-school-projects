@@ -58,24 +58,66 @@ function showImg() {
 		context.fillStyle = `#ff0000`;
 		context.fontWeight = 'bold';
 		context.fillText(`Score:` + `${count}`, 10, 50)
+		if ((birdY + 50 <= pipes[i].y + pipeBottom.height || birdY + 25 >= pipes[i].y + pipeBottom.height + gap) && birdX + 55 >= pipes[i].x && birdX <= pipes[i].x + pipeBottom.width || (birdY + 55 >= canvas.height || birdY + 10 <= 0)) {
+			message.style.display = `block`;
+			addScore(count);
+			gameOver.play();
+			birdSound.pause();
+
+			return;
+		}
 	}
 	birdY += gravity;
 	requestAnimationFrame(showImg);
 }
 window.onload = showImg;
 
+document.addEventListener('keyup', reStart);
+function reStart(e) {
+	if (e.key == 'Enter') {
+		message.style.display = `none`;
+		location.reload();
+	}
+}
+
 document.addEventListener('keydown', function (e) {
+	if (e.key == 'ArrowUp') {
 		bird.src = `img/birdwingsdown.png`;
 		moveBird();
+	}
 });
-
 document.addEventListener('keyup', function (e) {
+	if (e.key == 'ArrowUp') {
 		bird.src = `img/birdwingsup.png`;
 		moveBird();
-
+	}
 });
-
 function moveBird() {
 	birdY -= 35;
 	birdSound.play();
 }
+const scoreResult = JSON.parse(localStorage.getItem('gameScore')) || [];
+function addScore() {
+	scoreResult.push(count);
+	if (scoreResult.length > 10) {
+		scoreResult.shift(0);
+	}
+	localStorage.setItem('gameScore', JSON.stringify(scoreResult));
+}
+
+function showScore() {
+	const gameScore = document.querySelector('.game__score');
+	for (let i = 0; i < scoreResult.length; i++) {
+		const gameRes = document.createElement('p');
+		if (i == 9) {
+			gameRes.innerHTML = `Last Game : ${scoreResult[i]}`;
+		} else {
+			gameRes.innerHTML = `Game : ${scoreResult[i]}`;
+		}
+		gameRes.style.fontSize = `18px`;
+		gameRes.style.textAlign = `left`;
+		gameRes.style.padding = `0 0 0 20px`;
+		gameScore.append(gameRes);
+	}
+}
+showScore();
