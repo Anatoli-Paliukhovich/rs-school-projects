@@ -1,0 +1,149 @@
+/*--------------Null-list-----------------------*/
+*,
+*:before,
+*:after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 16px;
+}
+
+img {
+	vertical-align: top;
+}
+
+/*--------------Game-main-----------------------*/
+body {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.game__wrapper {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-height: 100%;
+}
+
+[class*=__container] {
+	max-width: 1270px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+#canvas {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.game__background {
+	position: relative;
+	padding: 0px 0px 45% 0px;
+}
+
+.background {
+	position: absolute;
+	width: 100vw;
+	height: 100.9vh;
+	object-fit: cover;
+}
+
+.game__message {
+	display: none;
+	position: absolute;
+	background-color: orange;
+	padding: 5px;
+	top: 20%;
+	left: 40%;
+	width: 20vw;
+	max-height: 29vh;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 700;
+	border-radius: 10px;
+	min-width: 300px;
+}
+
+.game__message p {
+	padding: 5px;
+}
+
+.game__message span {
+	color: #ff0000;
+	font-size: 34px;
+}
+
+.game__score {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: absolute;
+	background-color: orange;
+	padding: 5px;
+	top: 65px;
+	left: 5px;
+	padding: 10px 10px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 700;
+	border-radius: 10px;
+	min-width: 200px;
+}
+
+.game__score span {
+	color: red;
+	font-size: 34px;
+}
+
+/*--------------Footer-----------------------*/
+.footer {
+	width: 100%;
+	background-color: #000;
+	min-height: 70px;
+}
+
+.footer__container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 20px;
+}
+
+.footer__link-githab {
+	color: orange;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.footer__text {
+	color: orange;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.footer__link-rsschool {
+	background-color: orange;
+	width: 90px;
+	height: 40px;
+}
+
+@media (max-width: 767px) {
+	.footer__container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		row-gap: 20px;
+	}
+
+}
